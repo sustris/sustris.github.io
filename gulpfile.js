@@ -11,6 +11,9 @@ var plugins = require('gulp-load-plugins')();
 // https://github.com/gulpjs/gulp/issues/355
 var runSequence = require('run-sequence');
 
+var subtree = require('gulp-subtree');
+var clean = require('gulp-clean');
+
 var pkg = require('./package.json');
 var dirs = pkg['site-configs'].directories;
 
@@ -152,6 +155,16 @@ gulp.task('lint:js', function () {
 // ---------------------------------------------------------------------
 // | Main tasks                                                        |
 // ---------------------------------------------------------------------
+
+gulp.task('deploy', function () {
+    return gulp.src('dist')
+        .pipe(subtree({
+            remote: 'origin',
+            branch: 'master',
+            message: 'deployed..'
+        }))
+        .pipe(clean());
+});
 
 gulp.task('archive', function (done) {
     runSequence(
