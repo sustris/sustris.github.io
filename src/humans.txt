@@ -3,11 +3,8 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+    Designer & developer: Susovan Ghosh
+    Location: Kolkata, India
 
 # TECHNOLOGY COLOPHON
 
